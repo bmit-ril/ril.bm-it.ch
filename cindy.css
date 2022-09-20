@@ -1,58 +1,90 @@
 * {
 	box-sizing: border-box;
 }
+
+
+h1 {
+	/* Die Schriftfarbe von h1 wird verändert */
+	color: #FFFAFA;
+	font-size: 50px;
+}
+h3 {
+	color: #FFFAFA;
+	font-size: 28px;
+	margin-bottom: 0;
+}
+p.text-soft {
+	margin: 0;
+	color: #FFFAFA;
+	font-size: 11px;
+	font-style: italic;
+}
+
 body {
 	/* Eine Hintergundfarbe wird bestimmt und das Hindergrundbild wird in den <body> eingefügt. Da das Bild "über" der Farbe liegt, wird
-	dieses auch angezeigt. Die Hintergrundfareb sieht man nur dann, wenn das Bild (noch) nicht geladen ist. */
+	dieses auch angezeigt. Die Hintergrundfarbe sieht man nur dann, wenn das Bild (noch) nicht geladen ist. */
 	background-image: url("bg_cindy.jpg");
 	background-color: #f5f4f2;
 	/* Der Hintergrund wird so verändert, dass das Bild sich der Grösse des Fensters anpasst und nicht wiederholt wird. */
 	background-size: cover;
 	resize: both;
-	overflow: hidden;
 	background-repeat: no-repeat;
+	overflow: hidden;
 	/* Die Schriftart innerhalb von Body wird zu Helvetica geändert. Unterstützt der Browser diese Schriftart nicht, wird Arial verwendet */
+	padding-left: 15%;
+	padding-right: 15%;
+	padding-top: 10%;
 	font-family: Helvetica, Arial;
+	color: #FFFFFA;
 }
 header {
-	/* background-color: red;
-	opacity: 0.3; */
+	background-color: red;
+	opacity: 0.3;
 	text-align: center;
 	padding: 20px;
 }
 main {
 	float: right;
-	width: 80%;
-	/* background-color: blue;
-	opacity: 0.3; */
+	width: 75%;
+	background-color: blue;
+	opacity: 0.3;
 	padding: 20px;
 }
 aside {
 	float: left;
-	width: 20%;
-	/* background-color: green;
-	opacity: 0.3; */
+	width: 25%;
+	background-color: green;
+	opacity: 0.3;
 	padding: 20px;
 }
 /* floats müssen gecleart werden, damit der Footer sich richtig anordnet. */
 section::after {
 	content: "";
-	display: "table";
+	display: "block";
 	clear: both;
 }
-footer {
-	/* background-color: yellow;
-	opacity: 0.3; */
+footer [class ^= 'footer-'] {
+	background-color: yellow;
+	opacity: 0.3;
 	text-align: center;
 	padding: 20px;
+	display: inline-block;
+	width:33.33%;
 }
-h1 {
-	/* Die Schriftfarbe von h1 wird verändert */
-	color: #302f2b;
+footer .footer-left {
+	float: left;
 }
+footer .footer-right {
+	float: right;
+}
+
 /* Bei sehr schmalen Fenstern werden main und aside übereinander dargestellt, statt nebeneinander */
 @media (max-width: 600px) {
-  main, aside {
-    width: 100%;
-    height: auto;
-  }
+	body {
+		overflow: auto;
+	}
+	main, aside {
+		width: 100%;
+		height: auto;
+	}
+}
