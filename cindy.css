@@ -1,0 +1,58 @@
+* {
+	box-sizing: border-box;
+}
+body {
+	/* Eine Hintergundfarbe wird bestimmt und das Hindergrundbild wird in den <body> eingefügt. Da das Bild "über" der Farbe liegt, wird
+	dieses auch angezeigt. Die Hintergrundfareb sieht man nur dann, wenn das Bild (noch) nicht geladen ist. */
+	background-image: url("bg_cindy.jpg");
+	background-color: #f5f4f2;
+	/* Der Hintergrund wird so verändert, dass das Bild sich der Grösse des Fensters anpasst und nicht wiederholt wird. */
+	background-size: cover;
+	resize: both;
+	overflow: hidden;
+	background-repeat: no-repeat;
+	/* Die Schriftart innerhalb von Body wird zu Helvetica geändert. Unterstützt der Browser diese Schriftart nicht, wird Arial verwendet */
+	font-family: Helvetica, Arial;
+}
+header {
+	/* background-color: red;
+	opacity: 0.3; */
+	text-align: center;
+	padding: 20px;
+}
+main {
+	float: right;
+	width: 80%;
+	/* background-color: blue;
+	opacity: 0.3; */
+	padding: 20px;
+}
+aside {
+	float: left;
+	width: 20%;
+	/* background-color: green;
+	opacity: 0.3; */
+	padding: 20px;
+}
+/* floats müssen gecleart werden, damit der Footer sich richtig anordnet. */
+section::after {
+	content: "";
+	display: "table";
+	clear: both;
+}
+footer {
+	/* background-color: yellow;
+	opacity: 0.3; */
+	text-align: center;
+	padding: 20px;
+}
+h1 {
+	/* Die Schriftfarbe von h1 wird verändert */
+	color: #302f2b;
+}
+/* Bei sehr schmalen Fenstern werden main und aside übereinander dargestellt, statt nebeneinander */
+@media (max-width: 600px) {
+  main, aside {
+    width: 100%;
+    height: auto;
+  }
