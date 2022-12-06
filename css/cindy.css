@@ -12,10 +12,10 @@ h3 {
 h4 {
 	color: #FFFAFA;
 	font-size: 16px;
-	margin-top: 0;
 	margin-bottom: 0;
 	margin-left: 10px;
 	margin-right: 10px;
+	margin-top: 0;
 }
 p.text-soft {
 	color: #FFFAFA;
@@ -26,9 +26,9 @@ p.text-soft {
 
 /*W R A P P E R */
 .wrapper {
+	align-content: center;
 	display: flex;
 	flex-direction: column;
-	align-content: center;
 	min-height: 100vh;
 }
 
@@ -70,48 +70,53 @@ nav {
 }
 
 /* C O N T E N T */
-.content {
+.main {
 	display: flex;
 	flex-flow: row wrap;
+	flex: 1;
 	padding-left: 15%;
 	padding-right: 15%;
 	padding-top: 10%;
-	flex: 1;
+	
+}
+.content {
+	display: flex;
 }
 
 header {
 	background-color: red;
 	opacity: 0.3;
+	flex-grow: 0;
 	padding: 20px;
 	text-align: center;
-	order: 1;
 	width: 100%;
 }
 
 main {
 	background-color: blue;
 	opacity: 0.3;
+	order: 2;
 	padding: 20px;
-	order: 3;
 	width: 75%;
 }
 
 .aside-1 {
 	background-color: green;
 	opacity: 0.3;
+	order: 1;
 	padding: 20px;
-	order: 2;
 	width: 25%;
 }
 
 /* F O O T E R */
 footer {
+	/*background-color: yellow;
+	opacity: 0.3;*/
 	align-items: center;
-	/*background-color: yellow;*/
 	display: flex;
+	flex-flow: row wrap;
 	justify-content: space-evenly;
 	margin: 0 auto;
-	/*opacity: 0.3;*/
 	padding: 20px;
 	text-align: center;
 	width: 100%;
@@ -125,7 +130,7 @@ footer {
 	.navigation {
 		justify-content: center;
 	}
-	.content {
+	.main {
 		padding: 0;
 	}
 	header, main, .aside-1 {
