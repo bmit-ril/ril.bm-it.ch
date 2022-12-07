@@ -2,24 +2,32 @@
 h1 {
 	color: #FFFAFA;
 	font-size: 50px;
+	font-family: Geneva, Helvetica, Arial;
 }
 h3 {
 	color: #FFFAFA;
-	font-size: 24px;
+	font-size: 1.5em;
 	margin-bottom: 0;
 	margin-top: 0;
+	font-family: Comic Sans MS, Helvetica, Arial;
 }
 h4 {
 	color: #FFFAFA;
-	font-size: 16px;
+	font-size: 1em;
 	margin-bottom: 0;
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-top: 0;
+	font-family: Geneva, Helvetica, Arial;
+}
+p {
+	color: #FFFFFA;
+	font-family: Helvetica, Arial;
+	font-size: 1em;
 }
 p.text-soft {
 	color: #FFFAFA;
-	font-size: 11px;
+	font-size: 0.75em;
 	font-style: italic;
 	margin: 0;
 }
@@ -42,14 +50,11 @@ body {
 	background-size: cover;
 	overflow: hidden auto;
 	resize: both;
-	/* Schriftart */
-	color: #FFFFFA;
-	font-family: Helvetica, Arial;
 }
 
 /* N A V */
 nav {
-	/*background-color: #f528d3;*/
+	background-color: #f528d3;
 	width: 100%;
 	
 }
@@ -86,7 +91,6 @@ nav {
 header {
 	background-color: red;
 	opacity: 0.3;
-	flex-grow: 0;
 	padding: 20px;
 	text-align: center;
 	width: 100%;
@@ -97,7 +101,7 @@ main {
 	opacity: 0.3;
 	order: 2;
 	padding: 20px;
-	width: 75%;
+	width: 70%;
 }
 
 .aside-1 {
@@ -105,13 +109,13 @@ main {
 	opacity: 0.3;
 	order: 1;
 	padding: 20px;
-	width: 25%;
+	width: 30%;
 }
 
 /* F O O T E R */
 footer {
-	/*background-color: yellow;
-	opacity: 0.3;*/
+	background-color: yellow;
+	opacity: 0.3;
 	align-items: center;
 	display: flex;
 	flex-flow: row wrap;
@@ -123,7 +127,7 @@ footer {
 }
 
 /* M O B I L E */
-@media (max-width: 600px) {
+@media (max-width: 800px) {
 	body {
 		overflow: auto;
 	}
@@ -133,8 +137,18 @@ footer {
 	.main {
 		padding: 0;
 	}
-	header, main, .aside-1 {
+	.content {
+		flex-flow: column wrap;
+		align-content: center;
+	}
+	main, .aside-1 {
 		height: auto;
-		width: auto;
+		width: 80%;
+	}
+	footer {
+		display: flex;
+		flex-flow: column wrap;
+		gap: 5px;
+		padding: 0;
 	}
 }
