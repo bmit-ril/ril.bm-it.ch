@@ -37,24 +37,27 @@ p.text-soft {
 	align-content: center;
 	display: flex;
 	flex-direction: column;
+	margin:0px;
 	min-height: 100vh;
+	position: absolute;
+	top: 0;
 }
 
 /* B O D Y */
 body {
 	margin: 0;
 	/* Hintergrund */
-	background-color: #f5f4f2;
-	background-image: url("/image/bg_cindy.jpg");
+	background-color: #505050;
+	/* background-image: url("/image/bg_cindy.jpg");
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: cover;*/
 	overflow: hidden auto;
 	resize: both;
 }
 
 /* N A V */
 nav {
-	background-color: #f528d3;
+	background-color: rgba(255,0,0,0.5);
 	width: 100%;
 	
 }
@@ -64,6 +67,8 @@ nav {
 	justify-content: flex-end;
 	list-style: none;
 	margin: 0;
+	align-items: center;
+	
 }
 .navigation a {
 	text-decoration: none;
@@ -71,7 +76,8 @@ nav {
 	padding: 2px;
 }
 .navigation a:hover {
-	background:#ffd8f8
+	font-style: bold;
+	font-size: 1.2em;
 }
 
 /* C O N T E N T */
@@ -89,24 +95,21 @@ nav {
 }
 
 header {
-	background-color: red;
-	opacity: 0.3;
+	background-color: rgba(0,255,0,0.5);
 	padding: 20px;
 	text-align: center;
 	width: 100%;
 }
 
 main {
-	background-color: blue;
-	opacity: 0.3;
+	background-color: rgba(0,0,255,0.5);
 	order: 2;
 	padding: 20px;
 	width: 70%;
 }
 
 .aside-1 {
-	background-color: green;
-	opacity: 0.3;
+	background-color: rgba(255, 255, 0, 0.5);
 	order: 1;
 	padding: 20px;
 	width: 30%;
@@ -114,8 +117,7 @@ main {
 
 /* F O O T E R */
 footer {
-	background-color: yellow;
-	opacity: 0.3;
+	background-color: rgba(255, 0, 255, 0.5);
 	align-items: center;
 	display: flex;
 	flex-flow: row wrap;
@@ -149,6 +151,9 @@ footer {
 		display: flex;
 		flex-flow: column wrap;
 		gap: 5px;
-		padding: 0;
+		padding-bottom: 10px;
+		padding-top: 10px;
+		padding-left: 0;
+		padding-right: 0;
 	}
 }
