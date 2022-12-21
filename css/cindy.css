@@ -10,6 +10,7 @@ h3 {
 	margin-bottom: 0;
 	margin-top: 0;
 	font-family: Comic Sans MS, Helvetica, Arial;
+	font-variant: small-caps;
 }
 h4 {
 	color: #FFFAFA;
@@ -29,7 +30,9 @@ p.text-soft {
 	color: #FFFAFA;
 	font-size: 0.75em;
 	font-style: italic;
+	font-weight: lighter;
 	margin: 0;
+	font-variant: small-caps;
 }
 
 #canvas1 {

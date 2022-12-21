@@ -14,8 +14,8 @@ function distance(x1, y1, x2, y2) {
   return Math.sqrt(Math.pow(xDist, 2) + Math.pow(yDist, 2))
 }
 
-const canvas = document.getElementById('canvas1');
-const c = canvas.getContext('2d');
+const canvas = document.getElementById("canvas1");
+const c = canvas.getContext("2d");
 
 const colors = ['#2185C5', '#7ECEFD', '#FFF6E5', '#FF7F66']
 
@@ -117,9 +117,10 @@ class MiniStar {
 // Implementation
 // Hintergrund gradient
 const backgroundGradient = c.createLinearGradient(0, 0, 0, canvas.height)
-backgroundGradient.AddColorStop(0, '#171e26')
-backgroundGradient.AddColorStop(1, '#3f586b')
+backgroundGradient.addColorStop(0, "#171e26")
+backgroundGradient.addColorStop(1, "#3f586b")
 
+//Arrays, welche die Sterne beinhalten
 let stars
 let miniStars
 function init() {
