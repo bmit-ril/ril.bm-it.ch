@@ -35,7 +35,7 @@ class Star {
     this.radius = radius
     this.color = color
     this.velocity = {
-      x: 0,
+      x: (Math.random() - 0.5) * 8,
       y: 3
     }
     this.friction = 0.8;
@@ -44,11 +44,15 @@ class Star {
 
   // Funktion um ein Stern zu zeichnen
   draw() {
+    c.save()
     c.beginPath()
     c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
     c.fillStyle = this.color
+    //c.shadowColor = "#E3EAEF"
+    //c.shadowBlur = 20
     c.fill()
     c.closePath()
+    c.restore()
   }
 
   // Funktion, welche Stern an bestimmter Position mit draw() zeichnet
@@ -61,15 +65,16 @@ class Star {
     } else {
       this.velocity.y += this.gravity
     }
+    this.x += this.velocity.x
     this.y += this.velocity.y
   }
 
   // Funktion um Stern "explodieren" zu lassen"
   // this ist für Star, nicht Ministar
   shatter() {
-    for (let i = 0; i < 8; i++) {
-      this.radius -= 2
-      miniStars.push(new MiniStar(this.x, this.y, 2))
+    for (let i = 0; i < 4; i++) {
+      this.radius -= canvas.width/600
+      miniStars.push(new MiniStar(this.x, this.y, canvas.width/800))
     }
   }
 }
@@ -93,11 +98,15 @@ class MiniStar {
   }
 
   draw() {
+    c.save()
     c.beginPath()
     c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
-    c.fillStyle = `rgba(255, 0, 0, ${this.opacity})`
+    c.fillStyle = `rgba(227, 234, 239, ${this.opacity})`
+    c.shadowColor = "#E3EAEF"
+    c.shadowBlur = 20
     c.fill()
     c.closePath()
+    c.restore()
   }
 
   update() {
@@ -114,6 +123,20 @@ class MiniStar {
   }
 }
 
+function createMountainRange(mountainAmount, height, color) {
+  for (let i = 0; i < mountainAmount; i++) {
+    const mountainWidth = canvas.width / mountainAmount
+    c.beginPath()
+    c.moveTo(i * mountainWidth, canvas.height)
+    c.lineTo(i * mountainWidth + mountainWidth + 350, canvas.height)
+    c.lineTo(i * mountainWidth + mountainWidth / 2, canvas.height-height)
+    c.lineTo(i * mountainWidth - 350, canvas.height)
+    c.fillStyle = color
+    c.fill()
+    c.closePath()
+  }
+}
+
 // Implementation
 // Hintergrund gradient
 const backgroundGradient = c.createLinearGradient(0, 0, 0, canvas.height)
@@ -123,22 +146,38 @@ backgroundGradient.addColorStop(1, "#3f586b")
 //Arrays, welche die Sterne beinhalten
 let stars
 let miniStars
+let backgroundStarts
+let ticker = 0
+let randomSpawnRate = 250
 function init() {
   // Array welcher alle aktuelle Sterne beinhaltet
   stars = []
   // Array welcher alle aktuelle Ministerne beinhaltet
   miniStars = []
+  backgroundStars = []
 
-  for (let i = 0; i < 1; i++) {
-    stars.push(new Star(canvas.width / 2, 30, 30, 'blue'))
+  for (let i = 0; i < 150; i++) {
+    const x = Math.random() * canvas.width
+    const y = Math.random() * canvas.height
+    const radius = Math.random() * 3
+    backgroundStars.push(new Star(x, y, radius, "white"))
   }
 }
 
 // Animation Loop
 function animate() {
   requestAnimationFrame(animate)
+
   c.fillStyle = backgroundGradient
   c.fillRect(0, 0, canvas.width, canvas.height)
+
+  backgroundStars.forEach(backgroundStar => {
+    backgroundStar.draw()
+  })
+
+  createMountainRange(1, canvas.height - 50, "#384551")
+  createMountainRange(2, canvas.height - 100, "#2B3843")
+  createMountainRange(3, canvas.height - 300, "#26333E")
 
   stars.forEach((star, index) => {
     star.update()
@@ -154,6 +193,14 @@ function animate() {
       miniStars.splice(index, 1)
     }
   })
+
+  ticker++
+  
+  if (ticker % randomSpawnRate == 0) {
+    const x = Math.random() * canvas.width
+    stars.push(new Star(x, -100, canvas.width/100, "#E3EAEF"))
+    randomSpawnRate = Math.floor(Math.random() * (750 - 500 + 1) + 500)
+  }
 }
 
 init()
