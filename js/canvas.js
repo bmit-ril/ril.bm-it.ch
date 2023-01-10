@@ -17,6 +17,13 @@ function distance(x1, y1, x2, y2) {
 const canvas = document.getElementById("canvas1");
 const c = canvas.getContext("2d");
 
+//const footer = document.getElementsByClassName("footer");
+//const footerPosition = footer.getBoundingClientRect();
+//const footerHeigh = footerPosition.height;
+
+canvas.width = innerWidth
+canvas.height = innerHeight
+
 const colors = ['#2185C5', '#7ECEFD', '#FFF6E5', '#FF7F66']
 
 // Event Listeners
@@ -38,7 +45,7 @@ class Star {
       x: (Math.random() - 0.5) * 8,
       y: 3
     }
-    this.friction = 0.8;
+    this.friction = 0.6;
     this.gravity = 0.2;
   }
 
@@ -59,7 +66,7 @@ class Star {
   update() {
     this.draw()
     // Wenn der Stern das Screenende erreicht
-    if (this.y + this.radius + this.velocity.y > canvas.height) {
+    if (this.y + this.radius + this.velocity.y > canvas.height - groundHeight) {
       this.velocity.y = -this.velocity.y * this.friction
       this.shatter()
     } else {
@@ -90,8 +97,8 @@ class MiniStar {
     x: randomIntFromRange(-5, 5),
     y: randomIntFromRange(-15, 15)
    }
-   this.friction = 0.8;
-   this.gravity = 0.1;
+   this.friction = 0.6;
+   this.gravity = 0.2;
    // ttl: Time to live
    this.ttl = 200;
    this.opacity = 1
@@ -102,8 +109,8 @@ class MiniStar {
     c.beginPath()
     c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
     c.fillStyle = `rgba(227, 234, 239, ${this.opacity})`
-    c.shadowColor = "#E3EAEF"
-    c.shadowBlur = 20
+    //c.shadowColor = "#E3EAEF"
+    //c.shadowBlur = 20
     c.fill()
     c.closePath()
     c.restore()
@@ -111,7 +118,7 @@ class MiniStar {
 
   update() {
     this.draw()
-    if (this.y + this.radius + this.velocity.y > canvas.height) {
+    if (this.y + this.radius + this.velocity.y > canvas.height - groundHeight) {
       this.velocity.y = -this.velocity.y * this.friction
     } else {
       this.velocity.y += this.gravity
@@ -149,6 +156,7 @@ let miniStars
 let backgroundStarts
 let ticker = 0
 let randomSpawnRate = 250
+const groundHeight = canvas.height / 10
 function init() {
   // Array welcher alle aktuelle Sterne beinhaltet
   stars = []
@@ -163,7 +171,6 @@ function init() {
     backgroundStars.push(new Star(x, y, radius, "white"))
   }
 }
-
 // Animation Loop
 function animate() {
   requestAnimationFrame(animate)
@@ -178,6 +185,9 @@ function animate() {
   createMountainRange(1, canvas.height - 50, "#384551")
   createMountainRange(2, canvas.height - 100, "#2B3843")
   createMountainRange(3, canvas.height - 300, "#26333E")
+  // "Boden" am Fussende der Seite
+  c.fillStyle = "#182028"
+  c.fillRect(0, canvas.height - groundHeight, canvas.width, groundHeight)
 
   stars.forEach((star, index) => {
     star.update()
